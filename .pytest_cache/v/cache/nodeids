@@ -1,0 +1,5 @@
+[
+  "tests/test_chatbot.py::test_age_adapter_preserves_original_kural",
+  "tests/test_chatbot.py::test_exact_number_retrieval",
+  "tests/test_database.py::test_database_contains_all_kurals"
+]
