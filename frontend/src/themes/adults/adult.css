@@ -1,0 +1,25 @@
+/* Adult Theme Specific Styles */
+.adult-theme {
+  --adult-navy: #1a1f36;
+  --adult-navy-dark: #0f1322;
+  --adult-gold: #c4a35a;
+  --adult-gold-light: #e5cb8e;
+  --adult-maroon: #581825;
+  --adult-cream: #fbf8f1;
+  --adult-parchment: #f4ede0;
+  --adult-border: #dfd4bf;
+}
+
+.adult-parchment-card {
+  background: #fdfbf7;
+  border: 1px solid #dfd4bf;
+  box-shadow: 0 4px 20px -2px rgba(26, 31, 54, 0.06);
+}
+
+.adult-gold-border {
+  border: 1px solid rgba(196, 163, 90, 0.4);
+}
+
+.adult-gold-gradient {
+  background: linear-gradient(135deg, #c4a35a 0%, #e5cb8e 50%, #b38f45 100%);
+}

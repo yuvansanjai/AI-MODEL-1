@@ -1,0 +1,45 @@
+# Python Virtual Environments
+venv/
+backend/venv/
+env/
+.venv/
+
+# Node dependencies and build output
+node_modules/
+frontend/node_modules/
+frontend/dist/
+.npm/
+
+# Python Cache & Compiled Files
+__pycache__/
+backend/**/__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Audio and temporary cache
+backend/audio_cache/
+backend/test.mp3
+backend/test.wav
+*.tmp
+*.log
+
+# Environment variables
+.env
+backend/.env
+frontend/.env.local
+frontend/.env.*.local
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE & Editor Files
+.vscode/
+.idea/
+*.swp
+*.swo

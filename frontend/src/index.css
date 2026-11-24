@@ -1,0 +1,81 @@
+@import "tailwindcss";
+@import "./themes/children/children.css";
+@import "./themes/teenagers/teenager.css";
+@import "./themes/adults/adult.css";
+
+@layer base {
+  :root {
+    --font-tamil: 'Noto Sans Tamil', sans-serif;
+    --font-tamil-serif: 'Noto Serif Tamil', serif;
+    --font-children: 'Fredoka', 'Kavivanar', 'Noto Sans Tamil', cursive, sans-serif;
+    --font-teenager: 'Plus Jakarta Sans', 'Noto Sans Tamil', sans-serif;
+    --font-adult: 'Noto Serif Tamil', 'Cinzel', Georgia, serif;
+  }
+
+  body {
+    font-family: var(--font-tamil);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+  }
+}
+
+/* Children Theme Root */
+.theme-children {
+  font-family: var(--font-children);
+  background-color: #fffde7;
+  color: #37474f;
+}
+
+/* Teenager Theme Root */
+.theme-teenager {
+  font-family: var(--font-teenager);
+  background-color: #0b1320;
+  color: #f1f5f9;
+}
+
+/* Adult Theme Root */
+.theme-adult {
+  font-family: var(--font-adult);
+  background-color: #fbf8f1;
+  color: #1a1f36;
+}
+
+/* Palm Leaf Manuscript Texture Pattern */
+.bg-palm-leaf {
+  background-color: #f7f1e5;
+  background-image: radial-gradient(#d3c2a3 0.75px, transparent 0.75px), radial-gradient(#d3c2a3 0.75px, #f7f1e5 0.75px);
+  background-size: 24px 24px;
+  background-position: 0 0, 12px 12px;
+}
+
+/* Dark Palm Leaf Pattern for Teenager/Dark mode */
+.bg-dark-parchment {
+  background-color: #0b1320;
+  background-image: radial-gradient(rgba(20, 184, 166, 0.12) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* Traditional temple border style */
+.temple-border {
+  border-image: linear-gradient(to right, #b45309, #f59e0b, #b45309) 1;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c4a35a;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a3823c;
+}

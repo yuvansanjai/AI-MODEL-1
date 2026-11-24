@@ -1,0 +1,27 @@
+/* Teenager Theme Specific Styles */
+.teenager-theme {
+  --teen-primary: #0d9488;
+  --teen-primary-glow: rgba(13, 148, 136, 0.4);
+  --teen-gold: #f59e0b;
+  --teen-burgundy: #be123c;
+  --teen-bg: #0b1320;
+  --teen-card: #151f30;
+  --teen-border: rgba(20, 184, 166, 0.2);
+}
+
+.teen-glass {
+  background: rgba(21, 31, 48, 0.75);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.teen-glass-active {
+  background: rgba(21, 31, 48, 0.85);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(20, 184, 166, 0.4);
+  box-shadow: 0 0 20px rgba(13, 148, 136, 0.2);
+}
+
+.teen-gradient-bg {
+  background: radial-gradient(circle at 20% 20%, #134e4a 0%, #0f172a 50%, #050b14 100%);
+}
