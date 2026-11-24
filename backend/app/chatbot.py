@@ -1,3 +1,15 @@
+<<<<<<< HEAD
+from .kural_search import search_kurals
+from .age_adapter import generate_age_response
+
+
+def answer_question(question, age="Adults", confidence=None, language="English"):
+    records = search_kurals(question)
+    return {
+        "answer": generate_age_response(question, age, confidence, language, records),
+        "records": records,
+    }
+=======
 """Conversational chatbot engine for Thiruvalluvar AI.
 
 Features:
@@ -429,3 +441,4 @@ def get_active_sessions_count() -> int:
     """Return count of active sessions in memory."""
     _clean_expired_sessions()
     return len(_SESSIONS)
+>>>>>>> 071a39a990d8d851a677928900ec91f75fab24b3

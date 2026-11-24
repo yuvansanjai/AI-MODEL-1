@@ -1,0 +1,296 @@
+:root {
+  font-family: "Segoe UI", "Noto Sans Tamil", system-ui, sans-serif;
+  color: #1a2438;
+  background: #f5efe2;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 320px; min-height: 100vh; }
+button, input, select { font: inherit; }
+button { cursor: pointer; }
+
+.app {
+  min-height: 100vh;
+  background:
+    linear-gradient(90deg, rgba(180, 142, 77, .055) 1px, transparent 1px),
+    linear-gradient(rgba(180, 142, 77, .055) 1px, transparent 1px),
+    #f7f3ea;
+  background-size: 32px 32px;
+}
+
+.topbar {
+  height: 78px;
+  padding: 0 max(24px, 4vw);
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  border-bottom: 1px solid rgba(194, 163, 105, .55);
+  background: rgba(255, 253, 246, .94);
+  backdrop-filter: blur(12px);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.brand {
+  border: 0;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #18243a;
+  padding: 0;
+  text-align: left;
+}
+.brand-mark {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #c6a461;
+  border-radius: 50%;
+  color: #9c7336;
+  background: #fbf5df;
+  font-family: Georgia, "Noto Serif Tamil", serif;
+  font-size: 20px;
+  box-shadow: inset 0 0 0 4px #fffdf6;
+}
+.brand strong { display: block; font-family: Georgia, "Noto Serif Tamil", serif; font-size: 15px; letter-spacing: .05em; }
+.brand small { display: block; color: #9b7a45; font-size: 9px; letter-spacing: .22em; margin-top: 3px; }
+
+.navlinks { display: flex; align-items: center; gap: 4px; margin: auto; }
+.navlinks button {
+  border: 0;
+  background: transparent;
+  color: #667085;
+  font-size: 13px;
+  padding: 28px 12px 26px;
+  border-bottom: 2px solid transparent;
+}
+.navlinks button.active { color: #18243a; border-bottom-color: #b39353; font-weight: 700; }
+
+.controls { display: flex; gap: 8px; }
+.controls label { display: flex; align-items: center; gap: 7px; color: #7c735f; font-size: 11px; }
+.controls select {
+  appearance: none;
+  min-width: 92px;
+  border: 1px solid #d9cda9;
+  border-radius: 8px;
+  background: #fffdf7;
+  color: #26344e;
+  padding: 8px 26px 8px 10px;
+  background-image: linear-gradient(45deg, transparent 50%, #9b7a45 50%), linear-gradient(135deg, #9b7a45 50%, transparent 50%);
+  background-position: calc(100% - 13px) 14px, calc(100% - 9px) 14px;
+  background-size: 4px 4px;
+  background-repeat: no-repeat;
+}
+
+.page { max-width: 1260px; margin: 0 auto; padding: 26px 24px 48px; }
+
+.hero {
+  min-height: 320px;
+  overflow: hidden;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.25fr .75fr;
+  align-items: center;
+  border: 1px solid #decda7;
+  border-radius: 22px;
+  background:
+    radial-gradient(circle at 82% 48%, rgba(204, 174, 112, .24), transparent 16rem),
+    linear-gradient(115deg, #fffdf6 0%, #fbf7eb 64%, #eee3c7 100%);
+  box-shadow: 0 18px 50px rgba(73, 57, 30, .08);
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border: 1px solid rgba(173, 139, 73, .16);
+  border-radius: 14px;
+  pointer-events: none;
+}
+.hero-copy { padding: 42px 58px; position: relative; z-index: 2; }
+.hero-kicker { color: #9a7944; font-size: 10px; letter-spacing: .19em; font-weight: 800; }
+.hero h2 {
+  max-width: 620px;
+  margin: 14px 0 14px;
+  white-space: pre-line;
+  font-family: Georgia, "Noto Serif Tamil", serif;
+  color: #1e3152;
+  font-size: clamp(38px, 5vw, 64px);
+  line-height: .98;
+  letter-spacing: -.035em;
+}
+.hero-copy p { max-width: 560px; color: #667085; line-height: 1.65; font-size: 15px; }
+.hero-actions { display: flex; gap: 10px; margin-top: 24px; }
+.hero-actions button { border-radius: 9px; padding: 11px 18px; font-weight: 750; font-size: 13px; }
+.hero-actions .primary { border: 1px solid #263a60; background: #263a60; color: white; box-shadow: 0 8px 18px rgba(38, 58, 96, .18); }
+.hero-actions .secondary { border: 1px solid #c9b891; background: rgba(255,255,255,.72); color: #3d4c69; }
+
+.portrait { height: 320px; position: relative; display: grid; place-items: center; z-index: 2; }
+.portrait-halo {
+  width: 230px;
+  height: 230px;
+  border-radius: 50%;
+  display: grid;
+  place-items: end center;
+  background:
+    repeating-radial-gradient(circle, transparent 0 20px, rgba(170, 136, 70, .11) 21px 22px),
+    linear-gradient(145deg, #f1dfb0, #fffaf0);
+  border: 1px solid #cfb875;
+  box-shadow: 0 14px 30px rgba(124, 91, 38, .12);
+}
+.portrait-person {
+  width: 170px;
+  height: 210px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  border-radius: 80px 80px 18px 18px;
+  border: 1px solid #d8c28d;
+  background: linear-gradient(155deg, #fcfaf1, #d8b56c);
+  color: #6e5a37;
+  font-family: "Noto Serif Tamil", serif;
+  box-shadow: 0 8px 24px rgba(100,75,35,.12);
+}
+.turban { width: 85px; height: 62px; display: grid; place-items: center; border-radius: 45px 45px 18px 18px; background: #f7f1df; border: 1px solid #bda66f; font-size: 26px; margin-bottom: 4px; }
+.beard { width: 110px; height: 70px; display: grid; place-items: center; border-radius: 12px 12px 60px 60px; background: #fffefa; border: 1px solid #ded4bd; font-size: 12px; margin-bottom: 28px; }
+.portrait-caption { position: absolute; right: 42px; bottom: 24px; display: grid; text-align: right; color: #624a27; }
+.portrait-caption small { font-size: 8px; letter-spacing: .18em; }
+.portrait-caption strong { font-family: "Noto Serif Tamil", Georgia, serif; }
+
+.workspace { display: grid; grid-template-columns: 230px 1fr; gap: 18px; margin-top: 18px; }
+.side-panel, .chat-card {
+  border: 1px solid #e1d7bf;
+  border-radius: 16px;
+  background: rgba(255, 254, 249, .94);
+  box-shadow: 0 10px 30px rgba(73,57,30,.045);
+}
+.side-panel { padding: 14px; height: fit-content; }
+.side-heading { display: grid; padding: 8px 8px 12px; }
+.side-heading span { color: #a08757; font-size: 9px; letter-spacing: .16em; text-transform: uppercase; }
+.side-heading strong { font-family: Georgia, "Noto Serif Tamil", serif; font-size: 17px; margin-top: 3px; }
+.topic-button {
+  width: 100%;
+  min-height: 58px;
+  border: 0;
+  border-top: 1px solid #eee7d7;
+  background: transparent;
+  display: grid;
+  grid-template-columns: 38px 1fr 10px;
+  align-items: center;
+  gap: 8px;
+  text-align: left;
+  color: #26344e;
+  padding: 8px;
+  border-radius: 8px;
+}
+.topic-button:hover { background: #faf6e9; }
+.topic-icon { width: 36px; height: 36px; display: grid; place-items: center; border-radius: 10px; background: #edf1f5; color: #536681; font-family: "Noto Serif Tamil", serif; }
+.topic-button:nth-of-type(2) .topic-icon { background: #edf3e8; color: #64795e; }
+.topic-button:nth-of-type(3) .topic-icon { background: #f7eaea; color: #947171; }
+.topic-button:nth-of-type(4) .topic-icon { background: #eeeafd; color: #71689c; }
+.topic-button small { display: block; color: #a28b60; font-family: "Noto Serif Tamil", serif; }
+.topic-button strong { display: block; font-size: 13px; margin-top: 2px; }
+.topic-button b { color: #b0a789; font-size: 18px; }
+
+.privacy-card { margin-top: 10px; border-radius: 10px; background: #f7f4ec; border: 1px solid #e8dfc9; padding: 12px; }
+.privacy-title { display: flex; align-items: center; gap: 7px; font-size: 12px; }
+.privacy-title span { color: #79946a; }
+.privacy-card p { color: #7c8494; font-size: 11px; line-height: 1.45; }
+.privacy-card button { width: 100%; border: 1px solid #d8cda8; border-radius: 7px; background: #fffdf7; color: #59667e; padding: 7px; font-size: 11px; }
+
+.chat-card { min-height: 360px; padding: 20px; }
+.chat-heading { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee8d9; padding-bottom: 14px; }
+.chat-heading span { color: #a08757; font-size: 9px; letter-spacing: .16em; font-weight: 800; }
+.chat-heading h3 { margin: 5px 0 0; font-family: Georgia, "Noto Serif Tamil", serif; font-size: 20px; }
+.chat-heading .online-badge { border: 1px solid #dce3d5; background: #f5f8f1; border-radius: 20px; color: #69805f; padding: 7px 10px; letter-spacing: 0; }
+.online-badge i { width: 6px; height: 6px; display: inline-block; border-radius: 50%; background: #82a271; margin-right: 5px; }
+
+.composer { display: grid; grid-template-columns: 1fr 118px; gap: 8px; margin-top: 16px; }
+.composer input { min-width: 0; border: 1px solid #ddd5c2; border-radius: 10px; background: #fff; color: #26344e; padding: 14px 16px; outline: none; }
+.composer input:focus { border-color: #b79e64; box-shadow: 0 0 0 3px rgba(183,158,100,.10); }
+.composer button { border: 0; border-radius: 10px; background: #263a60; color: white; font-weight: 750; box-shadow: 0 8px 18px rgba(38,58,96,.14); }
+.composer button:disabled { opacity: .65; }
+
+.answer { margin-top: 14px; border: 1px solid #e5dec8; border-radius: 12px; background: #fcfaf3; padding: 14px; }
+.answer-heading { display: flex; align-items: center; gap: 8px; }
+.answer-heading strong { font-size: 12px; }
+.ai-avatar { width: 30px; height: 30px; display: grid; place-items: center; border-radius: 50%; background: #263a60; color: #fff; font-family: "Noto Serif Tamil", serif; }
+.answer-heading button { margin-left: auto; border: 0; background: transparent; color: #71809b; font-size: 11px; }
+.answer pre { white-space: pre-wrap; line-height: 1.65; font-family: inherit; color: #3e4a62; font-size: 13px; margin: 12px 0 0; }
+
+.kural-list { display: grid; gap: 10px; margin-top: 14px; }
+.kural-card { border: 1px solid #e6dec8; border-radius: 12px; background: #fffefa; display: grid; grid-template-columns: 86px 1fr; overflow: hidden; }
+.kural-heading { display: grid; place-content: center; text-align: center; background: #f4eddc; border-right: 1px solid #e7dcc0; color: #91733e; }
+.kural-heading span { font-family: "Noto Serif Tamil", serif; font-size: 11px; }
+.kural-heading strong { font-family: Georgia, serif; font-size: 24px; }
+.kural-content { padding: 14px 16px; }
+.kural-content p { margin: 5px 0; color: #5e687b; font-size: 13px; line-height: 1.55; }
+.kural-content .tamil { color: #26344e; font-family: "Noto Serif Tamil", Georgia, serif; font-size: 17px; }
+.kural-content .translation { color: #8a7a5e; font-family: Georgia, serif; font-style: italic; }
+
+.children { --accent: #7c9b73; }
+.children .topbar { background: rgba(255,252,242,.96); }
+.children .hero { background: linear-gradient(115deg, #fffaf1 0%, #edf7ef 100%); border-color: #cdddc8; }
+.children .hero h2 { color: #4d6a62; }
+.children .hero-actions .primary { background: #7c9b73; border-color: #7c9b73; }
+.children .kural-card { border-radius: 18px; }
+.children .portrait-halo { background: linear-gradient(145deg, #cfe8d2, #fffaf0); }
+
+.teenagers { background: linear-gradient(135deg, #111827, #1c2a43); color: #edf3ff; }
+.teenagers .topbar { background: rgba(12,18,31,.96); border-color: #30486b; }
+.teenagers .brand, .teenagers .brand strong { color: #eef3ff; }
+.teenagers .navlinks button { color: #99a8bf; }
+.teenagers .navlinks button.active { color: #dce8fb; border-color: #7c9bd2; }
+.teenagers .hero { background: linear-gradient(115deg, #17243a, #263a5c); border-color: #456184; }
+.teenagers .hero h2 { color: #eef4ff; }
+.teenagers .hero-copy p { color: #b8c4d7; }
+.teenagers .hero-actions .primary { background: #7693c7; border-color: #7693c7; }
+.teenagers .hero-actions .secondary { background: #1d2b45; color: #d9e5f7; border-color: #4c6486; }
+.teenagers .side-panel, .teenagers .chat-card, .teenagers .kural-card, .teenagers .answer { background: #18253a; border-color: #344c6d; }
+.teenagers .side-heading strong, .teenagers .topic-button, .teenagers .chat-heading h3 { color: #edf3ff; }
+.teenagers .topic-button { border-color: #2d415d; }
+.teenagers .topic-button:hover { background: #20314b; }
+.teenagers .privacy-card { background: #1d2c43; border-color: #344c6d; }
+.teenagers .chat-heading { border-color: #344c6d; }
+.teenagers .composer input { background: #101827; border-color: #405875; color: #edf3ff; }
+.teenagers .kural-heading { background: #263955; border-color: #405875; }
+.teenagers .kural-content p { color: #bac7d9; }
+.teenagers .kural-content .tamil { color: #eef3ff; }
+
+.adults .topbar { background: rgba(255,253,246,.96); }
+
+@media (max-width: 980px) {
+  .navlinks { display: none; }
+  .controls { margin-left: auto; }
+  .hero { grid-template-columns: 1fr 280px; }
+  .hero-copy { padding: 36px 38px; }
+  .portrait-halo { width: 210px; height: 210px; }
+}
+
+@media (max-width: 760px) {
+  .topbar { height: auto; min-height: 76px; flex-wrap: wrap; gap: 8px; padding: 10px 16px; }
+  .brand strong { font-size: 12px; }
+  .brand-mark { width: 38px; height: 38px; }
+  .controls { width: 100%; }
+  .controls label { flex: 1; }
+  .controls select { width: 100%; }
+  .page { padding: 14px 12px 32px; }
+  .hero { grid-template-columns: 1fr; min-height: 0; }
+  .hero-copy { padding: 28px 24px 12px; }
+  .hero h2 { font-size: 38px; }
+  .portrait { height: 250px; }
+  .portrait-halo { width: 190px; height: 190px; }
+  .portrait-caption { right: 20px; }
+  .workspace { grid-template-columns: 1fr; }
+  .side-panel { display: grid; grid-template-columns: 1fr 1fr; }
+  .side-heading { grid-column: 1 / -1; }
+  .privacy-card { grid-column: 1 / -1; }
+  .composer { grid-template-columns: 1fr; }
+  .composer button { min-height: 44px; }
+  .kural-card { grid-template-columns: 66px 1fr; }
+}

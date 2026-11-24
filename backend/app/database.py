@@ -1,3 +1,16 @@
+<<<<<<< HEAD
+import sqlite3
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[2]
+DATABASE_PATH = ROOT / "database" / "thirukkural.db"
+
+
+def get_connection():
+    connection = sqlite3.connect(DATABASE_PATH)
+    connection.row_factory = sqlite3.Row
+    return connection
+=======
 """SQLite database connection and query functions for Thiruvalluvar AI.
 
 Supports the comprehensive kurals schema:
@@ -568,3 +581,4 @@ def get_kurals_by_topic(topic_id: str, limit: int = 10) -> List[Dict[str, Any]]:
         if k:
             kurals.append(k)
     return kurals
+>>>>>>> 071a39a990d8d851a677928900ec91f75fab24b3

@@ -1,3 +1,68 @@
+<<<<<<< HEAD
+# Thiruvalluvar AI
+
+**Ancient Wisdom. Intelligent Future.**
+
+This project is a local-first, offline-capable Thiruvalluvar and Thirukkural educational system. It uses SQLite, a React/Vite frontend, and a FastAPI backend. No API key or internet service is required for database search or deterministic age-adaptive explanations.
+
+## Installation
+
+1. Install Python 3.11+ and Node.js 20+.
+2. Create the backend environment:
+
+   ```bat
+   py -m venv venv
+   venv\Scripts\pip install -r requirements.txt
+   cd frontend
+   npm install
+   ```
+
+3. Import and validate the database:
+
+   ```bat
+   venv\Scripts\python database\import_kurals.py
+   venv\Scripts\python database\validate_database.py
+   ```
+
+4. Run the complete local application:
+
+   ```bat
+   start.bat
+   ```
+
+The frontend is available at `http://127.0.0.1:5173` and the backend at `http://127.0.0.1:8000`.
+
+## Verified database
+
+The shipped CSV has been validated as exactly 1,330 unique rows numbered 1–1330. Import it with `database/import_kurals.py`. The CSV and SQLite database are the source of truth; the application does not generate or replace verse text.
+
+## Voice status
+
+The application deliberately does not simulate voice age estimation. `voice_age_estimator.py` reports `model_not_installed` until a separately downloaded and evaluated local model is configured. Voice age is not a reliable determination of actual age. Microphone access is manual and recordings are not retained.
+
+Browser speech synthesis can use installed Windows voices for speech output. Offline recognition and local Tamil TTS require optional compatible downloaded models and are not claimed as working until installed and tested.
+
+## Offline operation
+
+Normal operation makes requests only to `127.0.0.1`. Disconnect network access after dependencies and optional models are installed. Do not add remote fonts, CDNs, analytics, or remote API calls.
+
+## Development
+
+```bat
+venv\Scripts\python -m uvicorn backend.app.main:app --host 127.0.0.1 --port 8000
+cd frontend
+npm run dev
+```
+
+## Testing
+
+```bat
+venv\Scripts\python database\validate_database.py
+venv\Scripts\python -m pytest tests
+cd frontend
+npm run build
+```
+=======
 # 🏛️ THIRUVALLUVAR AI (திருவள்ளுவர் AI)
 
 ### *Ancient Wisdom. Intelligent Future. | பழமையான ஞானம். புத்திசாலி எதிர்காலம்.*
@@ -247,3 +312,4 @@ This software is released under the [MIT License](LICENSE). The Thirukkural coup
   <em>"அகர முதல எழுத்தெல்லாம் ஆதி பகவன் முதற்றே உலகு."</em><br>
   <em>THIRUVALLUVAR AI — Ancient Wisdom, Intelligent Future.</em>
 </p>
+>>>>>>> 071a39a990d8d851a677928900ec91f75fab24b3

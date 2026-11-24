@@ -1,3 +1,56 @@
+<<<<<<< HEAD
+from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel, Field
+from .database import get_connection
+from .kural_search import get_kural, search_kurals
+from .chatbot import answer_question
+from .voice_age_estimator import estimate_age
+
+app = FastAPI(title="Thiruvalluvar AI", version="1.0")
+app.add_middleware(CORSMiddleware, allow_origins=["http://localhost:5173"], allow_methods=["*"], allow_headers=["*"])
+
+
+class ChatRequest(BaseModel):
+    question: str = Field(min_length=1, max_length=500)
+    age: str = "Adults"
+    confidence: float | None = Field(default=None, ge=0.0, le=1.0)
+    language: str = "English"
+
+
+@app.get("/api/health")
+def health():
+    with get_connection() as connection:
+        count = connection.execute("SELECT COUNT(*) FROM kurals").fetchone()[0]
+    return {"status": "ok", "database_kurals": count, "cloud_dependencies": False}
+
+
+@app.get("/api/kural/{number}")
+def kural(number: int):
+    if not 1 <= number <= 1330:
+        raise HTTPException(404, "Kural number must be between 1 and 1330")
+    record = get_kural(number)
+    if not record:
+        raise HTTPException(404, "Kural not found")
+    return record
+
+
+@app.get("/api/search")
+def search(q: str, limit: int = 5):
+    if not q.strip():
+        raise HTTPException(400, "Search query is required")
+    return {"results": search_kurals(q, min(limit, 20))}
+
+
+@app.post("/api/chat")
+def chat(request: ChatRequest):
+    return answer_question(request.question, request.age, request.confidence, request.language)
+
+
+@app.post("/api/estimate-age")
+def estimate_age_endpoint():
+    return estimate_age()
+=======
 """FastAPI Application for Thiruvalluvar AI offline educational platform.
 
 Configures:
@@ -176,3 +229,4 @@ if __name__ == "__main__":
     port = int(os.getenv("PORT", 8000))
     host = os.getenv("HOST", "0.0.0.0")
     uvicorn.run("app.main:app", host=host, port=port, reload=True)
+>>>>>>> 071a39a990d8d851a677928900ec91f75fab24b3

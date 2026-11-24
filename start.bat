@@ -1,4 +1,17 @@
 @echo off
+<<<<<<< HEAD
+setlocal
+cd /d "%~dp0"
+
+if not exist "database\thirukkural.db" (
+  python database\import_kurals.py
+)
+
+start "" python -m uvicorn backend.app.main:app --host 127.0.0.1 --port 8000
+start "" cmd /c "cd /d frontend && npm run dev"
+timeout /t 3 /nobreak >nul
+start "" "http://127.0.0.1:5173"
+=======
 title THIRUVALLUVAR AI Launcher
 echo ========================================================
 echo           THIRUVALLUVAR AI
@@ -29,3 +42,4 @@ echo   Backend API Docs: http://localhost:8000/docs
 echo ========================================================
 echo.
 pause
+>>>>>>> 071a39a990d8d851a677928900ec91f75fab24b3

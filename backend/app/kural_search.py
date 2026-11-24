@@ -1,3 +1,65 @@
+<<<<<<< HEAD
+import re
+from .database import get_connection
+
+TOPIC_TERMS = {
+    "knowledge": ["knowledge", "learning", "education", "wisdom", "அறிவு", "கல்வி"],
+    "friendship": ["friendship", "friend", "நட்பு", "நண்பர்"],
+    "work": ["work", "effort", "career", "உழைப்பு", "தொழில்"],
+    "love": ["love", "affection", "காதல்", "அன்பு"],
+    "leadership": ["leader", "leadership", "king", "government", "அரசு", "அரசன்"],
+    "virtue": ["virtue", "good conduct", "அறம்", "ஒழுக்கம்"],
+}
+
+
+def get_kural(number):
+    with get_connection() as connection:
+        row = connection.execute(
+            "SELECT * FROM kurals WHERE kural_number = ?", (number,)
+        ).fetchone()
+        return dict(row) if row else None
+
+
+def search_kurals(query, limit=5):
+    text = (query or "").strip()
+    if not text:
+        return []
+
+    number_match = re.search(r"\b(\d{1,4})\b", text)
+    if number_match:
+        number = int(number_match.group(1))
+        if 1 <= number <= 1330:
+            row = get_kural(number)
+            return [row] if row else []
+
+    topic = None
+    lower = text.lower()
+    for name, terms in TOPIC_TERMS.items():
+        if any(term.lower() in lower for term in terms):
+            topic = name
+            break
+
+    haystack_terms = text.replace("/", " ").replace(",", " ").split()
+    sql = """
+        SELECT * FROM kurals
+        WHERE lower(COALESCE(tamil_line1,'') || ' ' ||
+                     COALESCE(tamil_line2,'') || ' ' ||
+                     COALESCE(tamil_meaning_mv,'') || ' ' ||
+                     COALESCE(english_translation,'') || ' ' ||
+                     COALESCE(english_explanation,'') || ' ' ||
+                     COALESCE(chapter_en,'') || ' ' ||
+                     COALESCE(chapter_ta,'')) LIKE ?
+        LIMIT ?
+    """
+    pattern = "%" + "%".join(haystack_terms) + "%" if haystack_terms else "%"
+    with get_connection() as connection:
+        rows = connection.execute(sql, (pattern.lower(), limit)).fetchall()
+        if rows:
+            return [dict(row) for row in rows]
+
+    # Topic terms that are not literal database text receive no unrelated fallback.
+    return []
+=======
 """Search engine for Thirukkural.
 
 Provides a 3-Stage deterministic + semantic search pipeline:
@@ -370,3 +432,4 @@ def search_kurals(
         total_matches=total_matches,
         results=results
     )
+>>>>>>> 071a39a990d8d851a677928900ec91f75fab24b3

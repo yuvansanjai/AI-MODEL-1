@@ -43,3 +43,7 @@ desktop.ini
 .idea/
 *.swp
 *.swo
+
+venv/
+node_modules/
+__pycache__/

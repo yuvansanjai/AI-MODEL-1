@@ -1,3 +1,13 @@
+<<<<<<< HEAD
+def estimate_age(audio_features=None):
+    """Explicitly reports that no pretrained model is installed."""
+    return {
+        "category": "Unknown",
+        "confidence": 0.0,
+        "status": "model_not_installed",
+        "message": "No locally installed age-estimation model is available. Use manual age selection; no voice-age claim is made.",
+    }
+=======
 """Voice age estimation module for Thiruvalluvar AI.
 
 Analyzes acoustic features (fundamental frequency / pitch, spectral centroid,
@@ -197,3 +207,4 @@ def classify_age_from_features(features: Dict[str, Any]) -> VoiceAnalyzeResponse
         recommended_profile=profile,
         explanation=explanation,
     )
+>>>>>>> 071a39a990d8d851a677928900ec91f75fab24b3

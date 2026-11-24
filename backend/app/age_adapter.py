@@ -1,3 +1,47 @@
+<<<<<<< HEAD
+AGE_GROUPS = {"Children", "Teenagers", "Adults"}
+
+
+def generate_age_response(question, age, confidence, language, kural_records):
+    if age not in AGE_GROUPS:
+        age = "Adults"
+
+    if not kural_records:
+        if language == "Tamil":
+            return "அந்த விஷயத்துக்குத் தொடர்பான குறளை நம்பகமான உள்ளூர் தரவுத்தளத்தில் கண்டுபிடிக்க முடியவில்லை. மேலும் குறிப்பிட்ட தலைப்பு அல்லது குறள் எண்ணை கூறுங்கள்."
+        return "I could not find a matching verse in the verified local database. Please provide a more specific topic or Kural number."
+
+    record = kural_records[0]
+    original = f"{record['tamil_line1']} {record['tamil_line2']}"
+    meaning = record["tamil_meaning_mv"] if language == "Tamil" else record["english_explanation"]
+
+    if age == "Children":
+        if language == "Tamil":
+            explanation = f"இது ஒரு சிறு நல்ல பாடம்: \"{meaning}\" இதை வீட்டிலும் பள்ளியிலும் தினசரி செயலில் முயற்சி செய்யலாம்."
+        else:
+            explanation = f"This gives us a simple lesson: {meaning} Try it in school or at home with a kind and respectful choice."
+    elif age == "Teenagers":
+        if language == "Tamil":
+            explanation = f"இந்தக் குறள் சவால்கள், நட்பு, படிப்பு அல்லது தனிப்பட்ட வளர்ச்சியில் உனக்கு நம்பிக்கைமான வழிகாட்டும்: {meaning}"
+        else:
+            explanation = f"For everyday challenges, friendships, study, and personal growth, this Kural reminds us: {meaning}"
+    else:
+        if language == "Tamil":
+            explanation = f"இந்தக் குறளின் தத்துவச் சுருக்கம்: {meaning}"
+        else:
+            explanation = f"Philosophical and practical meaning: {meaning}"
+
+    if confidence is not None and confidence < 0.60:
+        disclaimer = (" | Voice age is uncertain; the manual age selection may be changed at any time."
+                      if language == "English" else
+                      " | குரலின் வயதுமதிப்பு உறுதியாக இல்லை; கையால் வயது வகையை மாற்றலாம்.")
+    else:
+        disclaimer = ""
+
+    if language == "Tamil":
+        return f"### குறள் {record['kural_number']}\n\n**{original}**\n\n**விளக்கம்:** {explanation}{disclaimer}"
+    return f"### Kural {record['kural_number']}\n\n**{original}**\n\n**Explanation:** {explanation}{disclaimer}"
+=======
 """Age-adaptive explanation generator for Thirukkural.
 
 Generates age-differentiated explanations tailored to:
@@ -457,3 +501,4 @@ def get_kural_detail(
         **kural,
         adapted_explanation=adapted
     )
+>>>>>>> 071a39a990d8d851a677928900ec91f75fab24b3
